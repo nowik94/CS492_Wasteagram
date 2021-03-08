@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "543558970209",
+    "project_id": "wasteagram-bd573",
+    "storage_bucket": "wasteagram-bd573.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543558970209:android:dcc05b06acea8d2d0eb320",
+        "android_client_info": {
+          "package_name": "edu.oregonstate.namki.wasteagram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543558970209-o86it4jovnknrblbcqme1ulibcddchrk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcQ7EIKG8yICizqlwEXli1N8LxWHCyYKs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543558970209-o86it4jovnknrblbcqme1ulibcddchrk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "543558970209-rp6otn3s382o5afk5vqcbk8b3e3lapt5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.oregonstate.namki.wasteagram"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
