@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
+import 'package:wasteagram/widgets/camera_fab.dart';
+
 // screen that will display all food waste posts by date
 
 class ListScreen extends StatelessWidget {
@@ -33,7 +35,9 @@ class ListScreen extends StatelessWidget {
             child: CircularProgressIndicator());
           }
         }
-      )
+      ),
+      floatingActionButton: CameraFab(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
