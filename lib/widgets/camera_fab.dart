@@ -23,6 +23,7 @@ class _CameraFabState extends State<CameraFab> {
     displayNewPostScreen(context, image);
   }
 
+  // function that will go to the New Post Screen and will pass the file
   void displayNewPostScreen(BuildContext context, File args) {
     Navigator.pushNamed(context, NewPostScreen.routeName, arguments: args);
   }

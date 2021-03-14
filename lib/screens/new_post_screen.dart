@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 
 class NewPostScreen extends StatelessWidget {
 
+  // routename
   static const routeName = 'newPostScreen';
+
+
 
   @override
   Widget build(BuildContext context) {

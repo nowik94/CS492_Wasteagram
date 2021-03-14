@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:wasteagram/widgets/camera_fab.dart';
+import 'package:wasteagram/models/food_waste_post.dart';
 
 // screen that will display all food waste posts by date
 
@@ -24,9 +25,17 @@ class ListScreen extends StatelessWidget {
               itemCount: snapshot.data.docs.length,
               itemBuilder: (context, index){
                 var post = snapshot.data.docs[index];
+                FoodWastePost newWastePost = FoodWastePost(
+                  date: post['date'],
+                  quantity: post['quantity'],
+                  location: post['location']
+                );
                 return ListTile(
-                  leading: Text(post['quantity'].toString()),
-                  title: Text('Post Title')
+                  trailing: Text(newWastePost.quantity.toString()),
+                  title: Text('Post Title'),
+                  onTap: () {
+
+                  },
                 );
               }
             );
@@ -39,5 +48,10 @@ class ListScreen extends StatelessWidget {
       floatingActionButton: CameraFab(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+  }
+
+  // function that will go to the next
+  void goToFoodWasteDetails(BuildContext context, FoodWastePost foodWastePost) {
+
   }
 }
