@@ -12,6 +12,18 @@ class DetailsScreen extends StatelessWidget {
     final FoodWastePost post = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
+          // back button icon, wrapped in semantics
+          leading: Semantics(
+              button: true,
+              enabled: true,
+              label: 'Back Button',
+              onTapHint: 'Go back to previous page',
+              child: IconButton(
+                  icon: Icon(Icons.arrow_back_ios),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+              )),
           centerTitle: true,
           title: Text('Wasteagram')),
       body: Padding(

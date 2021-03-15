@@ -34,7 +34,7 @@ class _NewPostFormState extends State<NewPostForm> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               wasteQuantityInputField(),
-              SizedBox(height: 40),
+              SizedBox(height: 12),
               formUploadButton()
             ]
           )
@@ -45,29 +45,44 @@ class _NewPostFormState extends State<NewPostForm> {
 
   // Widet for input field for quantity
   Widget wasteQuantityInputField() {
-    return TextFormField(
-      decoration: InputDecoration(
-          labelText: 'Wasted Items',
-          isDense: true,
-          border: OutlineInputBorder(),
+    return Semantics(
+      textField: true,
+      hint: 'Choose a number 0 or greater for the amount of waste for the day',
+      label: 'Waste Quantity Text Form Field',
+      child: TextFormField(
+        decoration: InputDecoration(
+            labelText: 'Wasted Items',
+            isDense: true,
+            border: OutlineInputBorder(),
+        ),
+        keyboardType: TextInputType.number,
+        onSaved: (value) {
+          postValues.quantity = int.parse(value);
+        },
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Please enter a number';
+          } else if(int.parse(value) < 0) {
+            return 'You must enter a non-negative number';
+          }
+        },
       ),
-      keyboardType: TextInputType.number,
-      onSaved: (value) {
-        postValues.quantity = int.parse(value);
-      },
-      validator: (value) {
-        validateQuantityInput(value);
-      },
     );
   }
 
   // elevated button widget for our form that will be used to submit the form
   Widget formUploadButton() {
-    return ElevatedButton(
-        onPressed: () {
-          saveData();
-        },
-        child: const Icon(Icons.cloud_upload));
+    return Semantics(
+      button: true,
+      enabled: true,
+      onTapHint: 'Upload New Wasteagram Post',
+      label: 'Upload Button',
+      child: ElevatedButton(
+          onPressed: () {
+            saveData();
+          },
+          child: const Icon(Icons.cloud_upload)),
+    );
   }
 
   //TODO: Upload the file to cloudfirestore and then get the image url back..
@@ -99,15 +114,6 @@ class _NewPostFormState extends State<NewPostForm> {
       'date': post.date,
       'imageUrl': post.imageUrl
     });
-  }
-
-  // valdiation function for the quantity input field
-  String validateQuantityInput(value) {
-    if (value.isEmpty) {
-      return 'Please enter a number';
-    } else if(int.parse(value) < 0) {
-      return 'You must enter a non-negative number';
-    }
   }
 
   // method that uploads to image to cloudstore and gets the url of img location

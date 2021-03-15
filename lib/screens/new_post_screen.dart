@@ -16,23 +16,15 @@ class NewPostScreen extends StatefulWidget {
 class _NewPostScreenState extends State<NewPostScreen> {
   LocationData locationData;
   var locationService = Location();
-
+  
+  // set state to grab the location
   @override
   void initState() {
     super.initState();
     retrieveLocation();
   }
 
-  /*
-  void retrieveLocation() async {
-    var locationService = Location();
-    locationData = await locationService.getLocation();
-    setState(() {
-
-    });
-  }*/
-
-  //
+  // asks user for permission to get location and retrieves it if permissions are given
   void retrieveLocation() async {
     try {
       var _serviceEnabled = await locationService.serviceEnabled();
@@ -63,20 +55,24 @@ class _NewPostScreenState extends State<NewPostScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // the file path of the location of the image picked from gallery
     File recievedImage = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
           centerTitle: true,
           title: Text('Wasteagram')),
       body: SafeArea(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Center(child: Image.file(recievedImage)),
-              ),
-              NewPostForm(receivedImage: recievedImage, locationData: locationData,),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Center(
+                      child: Image.file(recievedImage)),
+                ),
+                NewPostForm(receivedImage: recievedImage, locationData: locationData,),
+              ],
+            ),
           )
           //child:
       )

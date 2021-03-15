@@ -35,13 +35,19 @@ class ListScreen extends StatelessWidget {
                         location: post['location'],
                         imageUrl: post['imageUrl']
                     );
-                    return ListTile(
-                      trailing: Text(newWastePost.quantity.toString()),
-                      title: Text(newWastePost.getFormatedDate),
-                      // on tap function that will go to details screen
-                      onTap: () {
-                        goToFoodWasteDetails(context, newWastePost);
-                      },
+                    return Semantics(
+                      button: true,
+                      enabled: true,
+                      label: 'Wasteagram Post',
+                      onTapHint: 'View post data: location, image and quatity of waste',
+                      child: ListTile(
+                        trailing: Text(newWastePost.quantity.toString()),
+                        title: Text(newWastePost.getFormatedDate),
+                        // on tap function that will go to details screen
+                        onTap: () {
+                          goToFoodWasteDetails(context, newWastePost);
+                        },
+                      ),
                     );
                   });
             } else {

@@ -30,11 +30,18 @@ class _CameraFabState extends State<CameraFab> {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: () {
-        getImage(context);
-      },
-      child: const Icon(Icons.add_a_photo)
+    return Semantics(
+      button: true,
+      enabled: true,
+      label: 'camera',
+      onTapHint: 'select an image for a new post',
+      child: FloatingActionButton(
+          onPressed: () {
+            getImage(context);
+          },
+          child: const Icon(Icons.add_a_photo)
+      ),
     );
   }
 }
+
