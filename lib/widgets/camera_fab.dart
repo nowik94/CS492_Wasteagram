@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:wasteagram/screens/new_post_screen.dart';
 
-// FAB that will open used to go to the
+// FAB that will used to open the galleries and pick an image from gallery
 class CameraFab extends StatefulWidget {
 
   @override
@@ -34,7 +34,7 @@ class _CameraFabState extends State<CameraFab> {
       onPressed: () {
         getImage(context);
       },
-      child: const Icon(Icons.photo_camera)
+      child: const Icon(Icons.add_a_photo)
     );
   }
 }
