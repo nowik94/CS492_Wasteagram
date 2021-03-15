@@ -13,9 +13,6 @@ class FoodWastePost {
   // getter methods for longitude and latitudes
   double get getLatitude => location.latitude;
   double get getLongitude => location.longitude;
-
-  // member function that will format the date
-  String formatDate() {
-    return DateFormat.yMMMEd().format(date.toDate());
-  }
+  // getter method that gets the formated date
+  String get getFormatedDate => DateFormat.yMMMEd().format(date.toDate());
 }

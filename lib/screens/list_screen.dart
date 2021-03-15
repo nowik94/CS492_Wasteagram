@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-
 import 'package:wasteagram/models/food_waste_post.dart';
 import 'package:wasteagram/screens/details_screen.dart';
 import 'package:wasteagram/widgets/camera_fab.dart';
@@ -34,10 +32,12 @@ class ListScreen extends StatelessWidget {
                     FoodWastePost newWastePost = FoodWastePost(
                         date: post['date'],
                         quantity: post['quantity'],
-                        location: post['location']);
+                        location: post['location'],
+                        imageUrl: post['imageUrl']
+                    );
                     return ListTile(
                       trailing: Text(newWastePost.quantity.toString()),
-                      title: Text(newWastePost.formatDate()),
+                      title: Text(newWastePost.getFormatedDate),
                       // on tap function that will go to details screen
                       onTap: () {
                         goToFoodWasteDetails(context, newWastePost);
@@ -55,8 +55,6 @@ class ListScreen extends StatelessWidget {
 
   // function that will navigate to the selected details screen for the post
   void goToFoodWasteDetails(BuildContext context, FoodWastePost foodWastePost) {
-    Navigator.pushNamed(context, DetailsScreen.routeName, arguments: {
-      foodWastePost
-    });
+    Navigator.pushNamed(context, DetailsScreen.routeName, arguments: foodWastePost);
   }
 }
