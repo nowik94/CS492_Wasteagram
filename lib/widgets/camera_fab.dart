@@ -12,9 +12,9 @@ class CameraFab extends StatefulWidget {
 
 class _CameraFabState extends State<CameraFab> {
   File image;
-
   final picker = ImagePicker();
 
+  // method that will get the file image path from the gallery
   void getImage(BuildContext context) async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
     image = File(pickedFile.path);

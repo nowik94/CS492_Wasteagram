@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.oregonstate.namki.wasteagram">
-   <application
+    <application
         android:label="wasteagram"
         android:icon="@mipmap/ic_launcher">
         <activity

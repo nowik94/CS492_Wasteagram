@@ -7,7 +7,6 @@ class DetailsScreen extends StatelessWidget {
   // route name
   static const routeName = 'details';
 
-
   @override
   Widget build(BuildContext context) {
     final FoodWastePost post = ModalRoute.of(context).settings.arguments;
@@ -42,10 +41,16 @@ class DetailsScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold
                           )
                       )]),
-                ],
-            ),
-          ),
+                  SizedBox(height: 15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    // display longitude and latitude
+                    children: [
+                      Text('Longitude: ${post.getLongitude}'),
+                      Text('Latitude: ${post.getLatitude}')
+                ]),
+          ]),
       ),
-    );
+    ));
   }
 }
